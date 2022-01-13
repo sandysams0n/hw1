@@ -2,12 +2,12 @@ let mongoose = require('mongoose'),
   express = require('express'),
   router = express.Router();
 
-// Book Model
-let bookSchema = require('../models/Book');
+// Student Model
+let studentSchema = require('../models/Student');
 
-// CREATE Book
-router.route('/create-book').post((req, res, next) => {
-  bookSchema.create(req.body, (error, data) => {
+// CREATE Student
+router.route('/create-student').post((req, res, next) => {
+  studentSchema.create(req.body, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -17,9 +17,9 @@ router.route('/create-book').post((req, res, next) => {
   })
 });
 
-// READ Books
+// READ Students
 router.route('/').get((req, res) => {
-  bookSchema.find((error, data) => {
+  studentSchema.find((error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -28,9 +28,9 @@ router.route('/').get((req, res) => {
   })
 })
 
-// Get Single Book
-router.route('/edit-book/:id').get((req, res) => {
-  bookSchema.findById(req.params.id, (error, data) => {
+// Get Single Student
+router.route('/edit-student/:id').get((req, res) => {
+  studentSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
     } else {
@@ -40,9 +40,9 @@ router.route('/edit-book/:id').get((req, res) => {
 })
 
 
-// Update Book
-router.route('/update-book/:id').put((req, res, next) => {
-  bookSchema.findByIdAndUpdate(req.params.id, {
+// Update Student
+router.route('/update-student/:id').put((req, res, next) => {
+  studentSchema.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
     if (error) {
@@ -50,14 +50,14 @@ router.route('/update-book/:id').put((req, res, next) => {
       console.log(error)
     } else {
       res.json(data)
-      console.log('Book updated successfully !')
+      console.log('Student updated successfully !')
     }
   })
 })
 
-// Delete Book
-router.route('/delete-book/:id').delete((req, res, next) => {
-  bookSchema.findByIdAndRemove(req.params.id, (error, data) => {
+// Delete Student
+router.route('/delete-student/:id').delete((req, res, next) => {
+  studentSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {

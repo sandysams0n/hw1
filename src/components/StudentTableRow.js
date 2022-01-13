@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
-export default class BookTableRow extends Component {
+export default class StudentTableRow extends Component {
 
     constructor(props) {
         super(props);
-        this.deleteBook = this.deleteBook.bind(this);
+        this.deleteStudent = this.deleteStudent.bind(this);
     }
 
-    deleteBook() {
-        axios.delete('http://localhost:4000/books/delete-book/' + this.props.obj._id)
+    deleteStudent() {
+        axios.delete('http://localhost:4000/students/delete-student/' + this.props.obj._id)
             .then((res) => {
-                console.log('Book successfully deleted!')
+                console.log('Student successfully deleted!')
             }).catch((error) => {
                 console.log(error)
             })
     }
+
     render() {
         return (
             <tr>
@@ -25,10 +26,10 @@ export default class BookTableRow extends Component {
                 <td>{this.props.obj.email}</td>
                 <td>{this.props.obj.rollno}</td>
                 <td>
-                    <Link className="edit-link" to={"/edit-book/" + this.props.obj._id}>
+                    <Link className="edit-link" to={"/edit-student/" + this.props.obj._id}>
                         Edit
                     </Link>
-                    <Button size="sm" variant="danger">Delete</Button>
+                    <Button onClick={this.deleteStudent} size="sm" variant="danger">Delete</Button>
                 </td>
             </tr>
         );

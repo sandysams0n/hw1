@@ -9,32 +9,32 @@ import './App.css'
 
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-import CreateBook from './components/create-book.component'
-import EditBook from './components/edit-book.component'
-import BookList from './components/book-list.component'
+import CreateStudent from './components/create-student.component'
+import EditStudent from './components/edit-student.component'
+import StudentList from './components/student-list.component'
 
 function App() {
   return (
     <div className="App">
       <Router>
         <header className="App-header">
-          <Navbar bg="dark" variant="dark">
+          <Navbar >
             <Container>
               <Navbar.Brand>
-                <Link to={'/create-book'} className="nav-link">
+                <Link to={'/create-student'} className="nav-link" style={{color: "purple"}}>
                   Book Nook
                 </Link>
               </Navbar.Brand>
 
               <Nav className="justify-content-end">
                 <Nav>
-                  <Link to={'/create-book'} className="nav-link">
+                  <Link to={'/create-student'} className="nav-link" style={{color: "purple"}}>
                     Home
                   </Link>
                 </Nav>
 
                 <Nav>
-                  <Link to={'/book-list'} className="nav-link">
+                  <Link to={'/student-list'} className="nav-link" style={{color: "purple"}}> 
                     Bookshelf
                   </Link>
                 </Nav>
@@ -51,22 +51,22 @@ function App() {
                   <Route
                     exact
                     path="/"
-                    component={(props) => <CreateBook {...props} />}
+                    component={(props) => <CreateStudent {...props} />}
                   />
                   <Route
                     exact
-                    path="/create-book"
-                    component={(props) => <CreateBook {...props} />}
+                    path="/create-student"
+                    component={(props) => <CreateStudent {...props} />}
                   />
                   <Route
                     exact
-                    path="/edit-book/:id"
-                    component={(props) => <EditBook {...props} />}
+                    path="/edit-student/:id"
+                    component={(props) => <EditStudent {...props} />}
                   />
                   <Route
                     exact
-                    path="/book-list"
-                    component={(props) => <BookList {...props} />}
+                    path="/student-list"
+                    component={(props) => <StudentList {...props} />}
                   />
                 </Switch>
               </div>
